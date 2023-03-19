@@ -1,9 +1,10 @@
 import pandas as pd
 
 # 1. group by label. keep just positive and negative. 50% is control set (positive) and 50% is negative set (negative)
-df = pd.read_csv('../data/Tweets_labelled.csv',sep=',', encoding='latin-1', header=None
-                 )
-negative_df, positive_df = df.groupby(by=df[0])
+df = pd.read_csv('../data/Tweets_labelled.csv',sep=',', encoding='latin-1', header=None,
+                 names=['target', 'ids', 'date', 'flag', 'user', 'text'])
+
+negative_df, positive_df = df.groupby(by=df['target'])
 # 2. Random partition: 70% training set, 15% development set, 15% test set (50'000 tweets in total). Each set has to have 50% as control set and 50% for negative set.
 Nr_set= 25000
 positive_set = positive_df[1].sample(Nr_set, random_state=10)
@@ -30,4 +31,3 @@ train_set.to_csv('../data/train_set.csv')
 develop_set.to_csv('../data/develop_set.csv')
 test_set.to_csv('../data/test_set.csv')
 
-# TODO: debug
