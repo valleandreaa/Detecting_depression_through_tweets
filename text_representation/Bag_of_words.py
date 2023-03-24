@@ -1,27 +1,22 @@
-# BAG OF WORDS
-
-# 1. Extract frequency of words
 from sklearn.feature_extraction.text import CountVectorizer
+import pandas as pd
+def BagOfWord():
+    '''
+    Bag of Word approach
+    :return:  matrix of frequency [df], vector of word [list], cleaned dataset [df]
+    '''
 
-# Define a list of text documents
-documents = [
-    "This is the first document.",
-    "This is the second document.",
-    "And this is the third one.",
-    "Is this the first document?"
-]
+    data = pd.read_csv('data/dataset_clean.csv')
+    data =data.dropna(subset = ['text_cleaned'] )
+    data = data.reset_index(drop=True)
 
-# Create a CountVectorizer object
-vectorizer = CountVectorizer()
+    # Create a CountVectorizer object
+    vectorizer = CountVectorizer()
 
-# Fit the vectorizer to the documents and transform the documents into a bag of words
-bow_matrix = vectorizer.fit_transform(documents)
+    # Fit the vectorizer to the documents and transform the documents into a bag of words
+    bow_matrix = (vectorizer.fit_transform(data['text_cleaned'].tolist())).toarray()
 
-# Get the feature names (i.e., the vocabulary) from the vectorizer
-feature_names = vectorizer.get_feature_names()
+    # Get the feature names from the vectorizer
+    feature_names = vectorizer.get_feature_names_out()
 
-# Print the bag of words matrix and the feature names
-print(bow_matrix.toarray())
-print(feature_names)
-# The output shows a matrix where each row represents a document, and each column represents a word in the vocabulary. The values in the matrix represent the number of times each word appears in each document. The feature names list contains the vocabulary of the bag of words, in alphabetical order.
-# 2. Mormalize the matrix
+    return bow_matrix, feature_names, data

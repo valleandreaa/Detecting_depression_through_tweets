@@ -1,38 +1,15 @@
 import nltk
 import string
 nltk.download('punkt')
-
-
-
+from nltk.corpus import words
 nltk.download('stopwords')
 from nltk.corpus import stopwords
-
-
-
-
-
-# 3.  Stemming:  Stemming is the process of reducing the words to their word stem or root form. The objective of stemming is to reduce related words to the same stem even if the stem is not a dictionary word.
-nltk.download('averaged_perceptron_tagger')
-# from nltk.stem import PorterStemmer
-# from nltk.tokenize import word_tokenize
-
-
-
-
-# text = "I am running and eating a burger"
-# stemmed_text = stem_text(text)
-# print(stemmed_text)
-# 4. Lemmatization: lemmatization reduces words to their base word, reducing the inflected words properly and ensuring that the root word belongs to the language.
-nltk.download('wordnet')
-# from nltk.stem import WordNetLemmatizer
-# from nltk.tokenize import word_tokenize
-
-
-
-# text = "I am running and eating a burger"
-# lemmatized_text = lemmatize_text(text)
-# print(lemmatized_text)
-
+from nltk.corpus import wordnet as wn
+from nltk.corpus import opinion_lexicon
+from nltk.tokenize import sent_tokenize
+from nltk.tokenize import word_tokenize
+nltk.download('opinion_lexicon')
+nltk.download('words')
 class TextTokenizer:
     def __init__(self, df):
         self.target = df['target']
@@ -45,16 +22,10 @@ class TextTokenizer:
         :return: cleaned text [str]
         '''
 
-
-
         self.text = self.text.apply(lambda t:" ".join(filter(lambda word: not word.startswith(('@', 'http')), t.split())))
 
         # Remove punctuation
         self.text = self.text.apply(lambda t: t.translate(str.maketrans('', '', string.punctuation)))
-
-        # Remove punctuation
-        self.text = self.text.apply(lambda t: t.translate(str.maketrans('', '', string.punctuation)))
-        # (str.maketrans('', '', string.punctuation))
 
         # Remove digits
         self.text =self.text.apply(lambda t: t.translate((str.maketrans('', '', string.digits))))
@@ -69,13 +40,22 @@ class TextTokenizer:
         # # Join the words back into a string
         # text = ' '.join(tokens)
 
-
+    def sentiment_dictionary(self):
+        '''
+        Generation of the sentiment dictionary
+        :return: positive words [list], negative words [list]
+        '''
+        positive_wds = set(opinion_lexicon.positive())
+        negative_wds = set(opinion_lexicon.negative())
+        return positive_wds, negative_wds
 
     def remove_stop_words(self):
-
+        '''
+        Remove stop words
+        :return:
+        '''
         # Tokenize the text into words
         tokens_list = self.text.apply(lambda t: nltk.word_tokenize(t))
-
 
         # Get the English stop words list
         stop_words = set(stopwords.words('english'))
@@ -86,26 +66,58 @@ class TextTokenizer:
             # filtered_tokens.append(' '.join(filtered_token))
             self.text[id]=' '.join(filtered_token)
 
+
     def stem_text(self):
+        '''
+        Stemming of a text
+        :return:
+        '''
         # Tokenize the text into words
         tokens_list = self.text.apply(lambda t: nltk.tokenize.word_tokenize(t))
 
-        # Create a Porter stemmer object
-        stemmer = nltk.stem.PorterStemmer()
+        # Create a Snowball stemmer object for English
+        stemmer = nltk.stem.SnowballStemmer('english')
 
         # Apply stemming to each word in the tokens list
         for id, tokens in enumerate(tokens_list):
             stemmed_tokens = [stemmer.stem(word) for word in tokens]
-            # filtered_tokens.append(' '.join(filtered_token))
             self.text[id] = ' '.join(stemmed_tokens)
 
+    def is_word(self, word):
+        '''
+        Existance of a words
+        :param word: word [str]
+        :return: exist [bool]
+        '''
+        for synset in wn.synsets(word):
+            for lemma in synset.lemmas():
+                if word == lemma.name():
+                    return True
+        return False
+    def remove_non_existing_words(self):
+        '''
+        Remove not existing words
+        :return:
+        '''
+        # Tokenize the text into words
+        tokens_list = self.text.apply(lambda t: nltk.tokenize.word_tokenize(t))
+
+        # Remove non-existing words from the tokens
+        for id, tokens in enumerate(tokens_list):
+            existing_tokens = [token for token in tokens if self.is_word(token)]
+            self.text[id] = ' '.join(existing_tokens)
+
     def lemmatize_text(self):
+        '''
+        Lemmatiztion of a text
+        :return:
+        '''
         # Tokenize the text into words
 
         tokens_list = self.text.apply(lambda t: nltk.tokenize.word_tokenize(t))
 
         # Create a WordNet lemmatizer object
-        # lemmatizer = nltk.stem.WordNetLemmatizer()
+
         lemmatizer = nltk.stem.WordNetLemmatizer()
 
         for id, tokens in enumerate(tokens_list):
@@ -115,12 +127,10 @@ class TextTokenizer:
             # Join the lemmatized tokens back into a string
             self.text[id] = ' '.join(lemmatized_tokens)
 
-        print(self.text)
-
     def df_cleaned_text(self, df):
+        '''
+        Assign dataset from object
+        :param df: dataset [df]
+        :return: updated dataset [df]
+        '''
         return df.assign(text_cleaned=self.text)
-
-
-
-
-# output: a dataframe with just the cleaned data
