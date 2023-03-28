@@ -5,7 +5,7 @@ import pandas as pd
 def TDIFD():
     data = pd.read_csv('data/dataset_clean.csv')
     data = data.dropna(subset = ['text_cleaned'] )
-
+    data = data.reset_index(drop=True)
 # Create a TfidfVectorizer object
     vectorizer = TfidfVectorizer()
 

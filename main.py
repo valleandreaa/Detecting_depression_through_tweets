@@ -1,6 +1,8 @@
 from preprocessing.tokenizer import TextTokenizer
 from text_representation.Bag_of_words import BagOfWord
+from text_representation.TFIDF import TDIFD
 from modelling.SVM import SVM_model
+from modelling.LogisticRegression import LogReg_model
 from data_extraction.extractor import ExtractorDataset
 import os
 import pandas as pd
@@ -10,8 +12,8 @@ import pandas as pd
 
 PreProcessing_status = True
 Nr_set = 4000
-Approach_text_representation ='BagOfWords'
-model= 'SVM'
+Approach_text_representation ='TDIFD'
+model= 'LogisticRegression' # SVM, LogisticRegression
 
 def PreProcessing():
 
@@ -32,9 +34,10 @@ def main():
     if not os.path.isfile('data/%s.csv' % ('dataset_clean')): PreProcessing()
 
     if Approach_text_representation == 'BagOfWords': matrix, features, data = BagOfWord()
+    elif Approach_text_representation == 'TDIFD':  matrix, features, data = TDIFD()
 
     if model == 'SVM': SVM_model(matrix, features, data)
-
+    elif model == 'LogisticRegression': LogReg_model(matrix, features, data)
 
 if __name__ == "__main__":
     main()
