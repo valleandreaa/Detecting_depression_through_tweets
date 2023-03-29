@@ -3,6 +3,7 @@ from text_representation.Bag_of_words import BagOfWord
 from text_representation.TFIDF import TDIFD
 from modelling.SVM import SVM_model
 from modelling.LogisticRegression import LogReg_model
+from modelling.NaiveBayes import multi_NB
 from data_extraction.extractor import ExtractorDataset
 import os
 import pandas as pd
@@ -11,9 +12,9 @@ import pandas as pd
 '''
 
 PreProcessing_status = True
-Nr_set = 4000
-Approach_text_representation ='TDIFD'
-model= 'LogisticRegression' # SVM, LogisticRegression
+Nr_set = 7500
+Approach_text_representation ='BagOfWords' #TDIFD
+model= 'SVM' # SVM, LogisticRegression
 
 def PreProcessing():
 
@@ -36,8 +37,9 @@ def main():
     if Approach_text_representation == 'BagOfWords': matrix, features, data = BagOfWord()
     elif Approach_text_representation == 'TDIFD':  matrix, features, data = TDIFD()
 
-    if model == 'SVM': SVM_model(matrix, features, data)
-    elif model == 'LogisticRegression': LogReg_model(matrix, features, data)
+    if model == 'SVM': SVM_model(matrix, features, data, tuning =True)
+    elif model == 'LogisticRegression': LogReg_model(matrix, features, data, tuning =True)
+    elif model == 'NB': multi_NB(matrix, features, data, tuning =True)
 
 if __name__ == "__main__":
     main()

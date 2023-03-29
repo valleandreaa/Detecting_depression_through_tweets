@@ -10,28 +10,32 @@ def SVM_model(matrix, features, data, tuning=False, metrics= None):
     :param data: cleaned dataset [df]
     :return:
     '''
-    param_grid = {'kernel': ['linear', 'rbf', 'poly'],
-                  'C': [0.1, 1, 10],
-                  'gamma': [0.1, 1, 10]}
+    param_grid = {'C' : [ 0.01, 0.1, 1, 10],
+                'gamma': [ 0.01, 0.1, 1.0, 'scale', 'auto'],
+              'kernel': ['linear','rbf', 'poly', 'sigmoid']}
 
     y_train=data[data['type']=='train']['target'].to_numpy()
     X_train = matrix[data[data['type']=='train'].index[0]:data[data['type']=='train'].index[-1]+1]
 
-    X_test = matrix[data[data['type'] == 'develop'].index[0]:data[data['type'] == 'develop'].index[-1]+1]
+    X_test = matrix[data[data['type'] == 'test'].index[0]:data[data['type'] == 'test'].index[-1]+1]
     y_test = data[data['type'] == 'develop']['target'].to_numpy()
 
     svm_model = SVC()
     if tuning:
-        grid_search = GridSearchCV(svm_model, param_grid, scoring='accuracy', cv=5)
+
+        grid_search = GridSearchCV(svm_model, param_grid, scoring='recall',verbose=42,  cv=5, error_score=0)
         grid_search.fit(X_train, y_train)
+        print("Best Hyperparameters: ", grid_search.best_params_)
         y_pred = grid_search.predict(X_test)
+
     else:
-        swm_model = svm_model.fit(X_train, y_train)
+        svm_model = svm_model.fit(X_train, y_train)
         y_pred = svm_model.predict(X_test)
+
     accuracy = accuracy_score(y_test, y_pred)
-    f1 =fbeta_score(y_test, y_pred, beta=1.5,average=None)
-    recall = recall_score(y_test, y_pred,average=None)
-    precision= precision_score(y_test, y_pred,average=None)
+    f1 =fbeta_score(y_test, y_pred, average='binary', pos_label=0, beta=1.5)
+    recall = recall_score(y_test, y_pred,average='binary', pos_label=0)
+    precision= precision_score(y_test, y_pred,average='binary', pos_label=0)
 
     print(
     'Accuracy', accuracy,'\n'

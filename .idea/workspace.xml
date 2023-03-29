@@ -6,6 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="3f90f504-e7ea-4c0f-aecf-fdffb8f097df" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/dataset.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/dataset_clean.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_extraction/extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_extraction/extractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelling/LogisticRegression.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelling/LogisticRegression.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelling/NaiveBayes.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelling/NaiveBayes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelling/SVM.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelling/SVM.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,9 +137,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.main" />
-      <item itemvalue="Python.extractor" />
       <item itemvalue="Python.Bag_of_words" />
+      <item itemvalue="Python.extractor" />
+      <item itemvalue="Python.main" />
       <item itemvalue="Python.tokenizer" />
     </list>
     <recent_temporary>
@@ -172,5 +180,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/data_extraction/extractor.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

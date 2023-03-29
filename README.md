@@ -1,9 +1,14 @@
 
 # Detecting depression through tweets 
 
-[//]: # (A curated list of resources for learning and using )
+* The dataset is assumed balance with 50'000 tweetes.
+* The partition of the dataset is 70% - train set and 30 % test set 
 
-[//]: # ([PyCharm]&#40;https://www.jetbrains.com/pycharm&#41;, )
+| Model     | Approach    | kernel | Hyperparameters | Accuracy | F1-Score | Recall | Precision | 
+|-----------|-------------|--------|----------------|----------|----------|--------|-----------|
+| SVM       | Bag of Words |        | gamma = , C=   |          |          |        |           |
+| SVM |  TDIFD       |        |                |          |          |        |           |
+
 
 [//]: # (an IDE for Python.)
 
@@ -37,6 +42,7 @@
 [//]: # ()
 [//]: # (* [Configure PyCharm for Python/Django and Introduction to Django Rest Framework]&#40;https://medium.com/@srijan.pydev_21998/configure-pycharm-for-python-django-and-introduction-to-django-rest-framework-f9c1a7cb4ba0&#41; )
 
+[//]: # ()
 [//]: # (is a walkthrough to get the most out of PyCharm Professional while working with Django. *&#40;2018/04/07, Srijan Anand&#41;*)
 
 [//]: # ()
