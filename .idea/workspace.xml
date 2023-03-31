@@ -9,11 +9,9 @@
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/dataset.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/dataset_clean.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_extraction/extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_extraction/extractor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelling/LogisticRegression.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelling/LogisticRegression.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelling/NaiveBayes.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelling/NaiveBayes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modelling/SVM.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelling/SVM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/tokenizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing/tokenizer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,9 +183,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/data_extraction/extractor.py</url>
-          <line>12</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/modelling/SVM.py</url>
+          <line>30</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

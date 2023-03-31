@@ -13,14 +13,17 @@ def SVM_model(matrix, features, data, tuning=False, metrics= None):
     param_grid = {'C' : [ 0.01, 0.1, 1, 10],
                 'gamma': [ 0.01, 0.1, 1.0, 'scale', 'auto'],
               'kernel': ['linear','rbf', 'poly', 'sigmoid']}
+    param_grid = {'C' : [  0.1 ],
+                'gamma': [  0.1],
+              'kernel': ['linear']}
 
     y_train=data[data['type']=='train']['target'].to_numpy()
     X_train = matrix[data[data['type']=='train'].index[0]:data[data['type']=='train'].index[-1]+1]
 
     X_test = matrix[data[data['type'] == 'test'].index[0]:data[data['type'] == 'test'].index[-1]+1]
-    y_test = data[data['type'] == 'develop']['target'].to_numpy()
+    y_test = data[data['type'] == 'test']['target'].to_numpy()
 
-    svm_model = SVC()
+    svm_model = SVC(C=0.1, gamma=0.1, kernel= 'linear')
     if tuning:
 
         grid_search = GridSearchCV(svm_model, param_grid, scoring='recall',verbose=42,  cv=5, error_score=0)

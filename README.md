@@ -1,13 +1,13 @@
 
 # Detecting depression through tweets 
 
-* The dataset is assumed balance with 50'000 tweetes.
+* The dataset is assumed balance with 20'000 tweetes.
 * The partition of the dataset is 70% - train set and 30 % test set 
 
-| Model     | Approach    | kernel | Hyperparameters | Accuracy | F1-Score | Recall | Precision | 
-|-----------|-------------|--------|----------------|----------|----------|--------|-----------|
-| SVM       | Bag of Words |        | gamma = , C=   |          |          |        |           |
-| SVM |  TDIFD       |        |                |          |          |        |           |
+| Model     | Approach    | kernel | Hyperparameters     | Accuracy | F1-Score | Recall | Precision | 
+|-----------|-------------|--------|---------------------|----------|----------|--------|-----------|
+| SVM       | Bag of Words | poly   | gamma =1.0 , C=0.01 |          |          |        |           |
+| SVM |  TDIFD       |        |                     |          |          |        |           |
 
 
 [//]: # (an IDE for Python.)
