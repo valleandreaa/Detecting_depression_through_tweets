@@ -1,3 +1,7 @@
+# Logistic Regression
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, f1_score, recall_score, precision_score, fbeta_score
+
 
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score, f1_score,recall_score, precision_score, fbeta_score, make_scorer
@@ -11,6 +15,7 @@ def LogReg_model(matrix, features, data, tuning=False):
     :param data: cleaned dataset [df]
     :return:
     '''
+
 
     param_grid = {'penalty': ['l1', 'l2', 'elasticnet'],
                   'C': [0.1, 1, 10],
@@ -46,3 +51,4 @@ def LogReg_model(matrix, features, data, tuning=False):
     'recall',recall,'\n'
     'precision', precision,'\n'
     )
+

@@ -1,5 +1,7 @@
 from sklearn.naive_bayes import MultinomialNB
+
 from sklearn.metrics import confusion_matrix, precision_score, recall_score, f1_score, accuracy_score, fbeta_score, make_scorer
+
 from sklearn.model_selection import GridSearchCV
 
 def multi_NB(matrix, features, data, tuning = False):
@@ -10,6 +12,9 @@ def multi_NB(matrix, features, data, tuning = False):
     :param data: cleaned dataset [df]
     :return:
     '''
+    param_grid = {
+    'classifier__alpha': [0.1, 0.5, 1.0, 2.0, 5.0],
+    'classifier__fit_prior': [True, False]}
 
     # parameters for tuning
     param_grid = {
@@ -38,6 +43,8 @@ def multi_NB(matrix, features, data, tuning = False):
     else:
         multinominal_NB = multinominal_NB.fit(X_train, y_train)
         y_pred = multinominal_NB.predict(X_test)
+
+
 
     accuracy = accuracy_score(y_test, y_pred)
     f1 =fbeta_score(y_test, y_pred, average='binary', pos_label=0, beta=1.5)
