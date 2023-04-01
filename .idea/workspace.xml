@@ -129,9 +129,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.main" />
-      <item itemvalue="Python.extractor" />
       <item itemvalue="Python.Bag_of_words" />
+      <item itemvalue="Python.extractor" />
+      <item itemvalue="Python.main" />
       <item itemvalue="Python.tokenizer" />
     </list>
     <recent_temporary>
