@@ -1,5 +1,6 @@
 import nltk
 import string
+import pandas as pd
 nltk.download('punkt')
 from nltk.corpus import words
 nltk.download('stopwords')
@@ -134,3 +135,17 @@ class TextTokenizer:
         :return: updated dataset [df]
         '''
         return df.assign(text_cleaned=self.text)
+
+
+def PreProcessing():
+
+    df = pd.read_csv('data/%s.csv' % ('dataset'))
+    token = TextTokenizer(df)
+    token.remove_characters()
+    token.stem_text()
+    token.remove_stop_words()
+    token.lemmatize_text()
+    # token.remove_non_existing_words()
+    df = token.df_cleaned_text(df)
+    df[['target', 'ids', 'user', 'text','type', 'text_cleaned']].to_csv('data/dataset_clean.csv', index=False)
+

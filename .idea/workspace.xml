@@ -5,7 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f90f504-e7ea-4c0f-aecf-fdffb8f097df" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/dataset.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/dataset_clean.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/dataset_clean.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_extraction/extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_extraction/extractor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelling/LogisticRegression.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelling/LogisticRegression.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelling/NaiveBayes.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelling/NaiveBayes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelling/SVM.py" beforeDir="false" afterPath="$PROJECT_DIR$/modelling/SVM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing/tokenizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing/tokenizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_representation/LDA.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_representation/LDA.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_representation/TFIDF.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_representation/TFIDF.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,8 +190,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/modelling/SVM.py</url>
-          <line>14</line>
-          <option name="timeStamp" value="37" />
+          <line>31</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
