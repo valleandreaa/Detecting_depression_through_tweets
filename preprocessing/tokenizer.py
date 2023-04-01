@@ -145,7 +145,7 @@ def PreProcessing():
     token.stem_text()
     token.remove_stop_words()
     token.lemmatize_text()
-    token.remove_non_existing_words()
+    # token.remove_non_existing_words()
     df = token.df_cleaned_text(df)
     df[['target', 'ids', 'user', 'text','type', 'text_cleaned']].to_csv('data/dataset_clean.csv', index=False)
 

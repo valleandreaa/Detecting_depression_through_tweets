@@ -1,13 +1,17 @@
 
 # Detecting depression through tweets 
 
-* The dataset is assumed balance with 20'000 tweetes.
+* The optimal set size is 3'500 observations.
 * The partition of the dataset is 70% - train set and 30 % test set 
 
-| Model     | Approach    | kernel | Hyperparameters     | Accuracy | F1-Score | Recall | Precision | 
-|-----------|-------------|--------|---------------------|----------|----------|--------|-----------|
-| SVM       | Bag of Words | poly   | gamma =1.0 , C=0.01 |          |          |        |           |
-| SVM |  TDIFD       |        |                     |          |          |        |           |
+| Model               | Approach    | kernel | solver    | Hyperparameters           | Accuracy | F1.5-Score | Recall | Precision | 
+|---------------------|-------------|--------|-----------|---------------------------|----------|------------|--------|-----------|
+| SVM                 | Bag of Words | poly   |           | gamma =1.0 , C=0.01       |          |            |        |           |
+| SVM                 |  TFIDF       |        |           |                           |          |            |        |           |
+| Naive Bayes         |     Bag of Words         | -      |           | alpha=1.0 fit_prior=False | 0.717    | 0.722      | 0.726  | 0.713     |
+| Naive Bayes         |         TFIDF | -      |           | alpha=2.0 fit_prior=False | 0.736    | 0.752      | 0.766  | 0.723     |
+| Logistic Regression |     Bag of Words          |        |           |                           |          |            |        |           |
+| Logistic Regression  |       TFIDF        | -      | liblinear | C= 1.0, penality =l1      | 0.700    | 0.655      | 0.625  | 0.735     |
 
 
 [//]: # (an IDE for Python.)

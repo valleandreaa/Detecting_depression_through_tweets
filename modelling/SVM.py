@@ -1,7 +1,9 @@
 # SVM
 from sklearn.svm import SVC
-from sklearn.metrics import accuracy_score, f1_score,recall_score, precision_score, fbeta_score
+from sklearn.metrics import accuracy_score, f1_score,recall_score, precision_score, fbeta_score, make_scorer
+
 from sklearn.model_selection import GridSearchCV
+
 def SVM_model(matrix, features, data, tuning=False, metrics= None):
     '''
     Support vector machine model
@@ -13,20 +15,19 @@ def SVM_model(matrix, features, data, tuning=False, metrics= None):
     param_grid = {'C' : [ 0.01, 0.1, 1, 10],
                 'gamma': [ 0.01, 0.1, 1.0, 'scale', 'auto'],
               'kernel': ['linear','rbf', 'poly', 'sigmoid']}
-    param_grid = {'C' : [  0.1 ],
-                'gamma': [  0.1],
-              'kernel': ['linear']}
+
 
     y_train=data[data['type']=='train']['target'].to_numpy()
     X_train = matrix[data[data['type']=='train'].index[0]:data[data['type']=='train'].index[-1]+1]
 
     X_test = matrix[data[data['type'] == 'test'].index[0]:data[data['type'] == 'test'].index[-1]+1]
     y_test = data[data['type'] == 'test']['target'].to_numpy()
+    ftwo_scorer = make_scorer(fbeta_score, beta=1.5)
+    svm_model = SVC()
 
-    svm_model = SVC(C=0.1, gamma=0.1, kernel= 'linear')
     if tuning:
 
-        grid_search = GridSearchCV(svm_model, param_grid, scoring='recall',verbose=42,  cv=5, error_score=0)
+        grid_search = GridSearchCV(svm_model, param_grid, scoring=ftwo_scorer,verbose=42,  cv=5, error_score=0, n_jobs=-1)
         grid_search.fit(X_train, y_train)
         print("Best Hyperparameters: ", grid_search.best_params_)
         y_pred = grid_search.predict(X_test)
@@ -46,3 +47,4 @@ def SVM_model(matrix, features, data, tuning=False, metrics= None):
     'recall',recall,'\n'
     'precision', precision,'\n'
     )
+    return accuracy, f1, recall, precision
