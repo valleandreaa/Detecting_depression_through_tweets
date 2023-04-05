@@ -1,8 +1,12 @@
 
 # Detecting depression through tweets 
 
+### Installation
+```
+pip install -r requirements.txt
+```
 * The optimal set size is 3'500 observations.
-* The partition of the dataset is 70% - train set and 30 % test set 
+* The partition of the dataset is 80% - train set and 20 % test set 
 
 | Model               | Approach    | kernel | solver    | Hyperparameters           | Accuracy | F1.5-Score | Recall | Precision | 
 |---------------------|-------------|--------|-----------|---------------------------|----------|------------|-------|-----------|
@@ -12,7 +16,6 @@
 | Naive Bayes         |         TFIDF | -      |           | alpha=2.0 fit_prior=False | 0.736    | 0.752      | 0.766 | 0.723     |
 | Logistic Regression |     Bag of Words          | -      |   liblinear | C= 0.1, penality =l1      | 0.651    | 0.553      | 0.502 | 0.716     |
 | Logistic Regression  |       TFIDF        | -      | liblinear | C= 1.0, penality =l1      | 0.700    | 0.655      | 0.625 | 0.735     |
-
 
 [//]: # (an IDE for Python.)
 
