@@ -5,13 +5,13 @@
 * The partition of the dataset is 70% - train set and 30 % test set 
 
 | Model               | Approach    | kernel | solver    | Hyperparameters           | Accuracy | F1.5-Score | Recall | Precision | 
-|---------------------|-------------|--------|-----------|---------------------------|----------|------------|--------|-----------|
-| SVM                 | Bag of Words | poly   |           | gamma =1.0 , C=0.01       |          |            |        |           |
-| SVM                 |  TFIDF       |        |           |                           |          |            |        |           |
-| Naive Bayes         |     Bag of Words         | -      |           | alpha=1.0 fit_prior=False | 0.717    | 0.722      | 0.726  | 0.713     |
-| Naive Bayes         |         TFIDF | -      |           | alpha=2.0 fit_prior=False | 0.736    | 0.752      | 0.766  | 0.723     |
-| Logistic Regression |     Bag of Words          | -      |   liblinear | C= 0.1, penality =l1      | 0.651    | 0.553      | 0.502  | 0.716     |
-| Logistic Regression  |       TFIDF        | -      | liblinear | C= 1.0, penality =l1      | 0.700    | 0.655      | 0.625  | 0.735     |
+|---------------------|-------------|--------|-----------|---------------------------|----------|------------|-------|-----------|
+| SVM                 | Bag of Words | poly   |           | gamma =1.0 , C=0.01       |          |            |       |           |
+| SVM                 |  TFIDF       |   rbf     |           | gamma = 0.1, C=1          |  0.7108    |  0.6609      | 0.6266    |   0.75387     |
+| Naive Bayes         |     Bag of Words         | -      |           | alpha=1.0 fit_prior=False | 0.717    | 0.722      | 0.726 | 0.713     |
+| Naive Bayes         |         TFIDF | -      |           | alpha=2.0 fit_prior=False | 0.736    | 0.752      | 0.766 | 0.723     |
+| Logistic Regression |     Bag of Words          | -      |   liblinear | C= 0.1, penality =l1      | 0.651    | 0.553      | 0.502 | 0.716     |
+| Logistic Regression  |       TFIDF        | -      | liblinear | C= 1.0, penality =l1      | 0.700    | 0.655      | 0.625 | 0.735     |
 
 
 [//]: # (an IDE for Python.)
