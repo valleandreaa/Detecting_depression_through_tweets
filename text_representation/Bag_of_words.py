@@ -5,15 +5,15 @@ def BagOfWord():
     Bag of Word approach
     :return:  matrix of frequency [df], vector of word [list], cleaned dataset [df]
     '''
-
+    # retrieve of the dataset
     data = pd.read_csv('data/dataset_clean.csv')
     data =data.dropna(subset = ['text_cleaned'] )
     data = data.reset_index(drop=True)
 
-    # Create a CountVectorizer object
+    # Count the frequency of the words and generation of the vectorizer
     vectorizer = CountVectorizer()
 
-    # Fit the vectorizer to the documents and transform the documents into a bag of words
+    # Fit the frequency into vectorizer
     bow_matrix = (vectorizer.fit_transform(data['text_cleaned'].tolist())).toarray()
 
     # Get the feature names from the vectorizer

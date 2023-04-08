@@ -38,5 +38,12 @@ def main():
     elif model == 'LogisticRegression': accuracy, f1, recall, precision =  LogReg_model(matrix, features, data, tuning =True)
     elif model == 'NB':  accuracy, f1, recall, precision =  multi_NB(matrix, features, data, tuning =True)
 
+    print(
+        'Accuracy', accuracy, '\n'
+        'F1 score - beta', f1, '\n'
+        'recall', recall, '\n'
+        'precision', precision, '\n'
+    )
+
 if __name__ == "__main__":
     main()
